@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog  
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">  
+ <changeSet id="1" author="marcelo" dbms="MySQL">
+        
+        <preConditions>
+            <not>
+                <tableExists tableName="user" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="user">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+            <column name="login" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="password" type="varchar(100)"/>
+        </createTable>
+
+        <createTable tableName="patient">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+            <column name="zip_code" type="varchar(9)"/>
+            <column name="address" type="varchar(70)"/>
+            <column name="locality" type="varchar(50)"/>
+            <column name="state" type="varchar(20)"/>
+            <column name="born" type="date"/>
+        </createTable>
+
+        <createTable tableName="care_record">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="forwarding" type="varchar(100)"/>
+            <column name="used_material" type="varchar(150)"/>
+            <column name="code" type="varchar(20)"/>
+            <column name="procedure" type="varchar(150)"/>
+            <column name="cid" type="varchar(50)"/>
+            <column name="diagnosis" type="varchar(150)"/>
+            <column name="info_attendance" type="varchar(150)"/>
+            <column name="arrival_time" type="varchar(10)"/>
+            <column name="consultation_date" type="date"/>
+        </createTable>
+
+        <addColumn tableName="care_record">
+            <column name="patient_id" type="int">
+                <constraints foreignKeyName="patient_id"
+                     references="patient(id)" nullable="false"/>
+            </column>
+        </addColumn>
+
+        <createTable tableName="roles">
+            <column name="user_id" type="int"/>
+            <column name="perfis" type="int"/>
+        </createTable>
+    </changeSet>   
+</databaseChangeLog> 

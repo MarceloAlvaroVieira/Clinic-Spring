@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "jwt.expiration",
+    "type": "java.lang.String",
+    "description": "Duration of validity of the token from the moment of its creation"
+  },
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "Signature key and validation of the sent JWT token"
+  },
+  {
+    "name": "defaultPassword",
+    "type": "java.lang.String",
+    "description": "Default password for new registered users"
+  }
+]}

@@ -1,0 +1,62 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="marcelo" dbms="MySQL">
+        
+        <preConditions>
+            <not>
+                <tableExists tableName="usuario" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="usuario">
+            <column name="id" type="int" autoIncrement="true"/>
+            <column name="nome" type="varchar(50)"/>
+            <column name="login" type="varchar(50)"/>
+            <column name="senha" type="varchar(100)"/>
+        </createTable>
+
+        <createTable tableName="paciente">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(50)"/>
+            <column name="cep" type="varchar(9)"/>
+            <column name="endereco" type="varchar(70)"/>
+            <column name="localidade" type="varchar(50)"/>
+            <column name="uf" type="varchar(20)"/>
+            <column name="data_nascimento" type="date"/>
+        </createTable>
+
+        <createTable tableName="ficha_atendimento">
+            <column name="id_atendimento" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="encaminhamento" type="varchar(100)"/>
+            <column name="utilizados_no_atendimento" type="varchar(150)"/>
+            <column name="codigo" type="varchar(20)"/>
+            <column name="procedimento" type="varchar(150)"/>
+            <column name="cid" type="varchar(50)"/>
+            <column name="diagnostico" type="varchar(150)"/>
+            <column name="informacao_atendimento" type="varchar(150)"/>
+            <column name="hora_chegada" type="varchar(10)"/>
+            <column name="data" type="date"/>
+        </createTable>
+
+        <addColumn tableName="ficha_atendimento">
+            <column name="id_paciente" type="int">
+                <constraints foreignKeyName="id_paciente"
+                     references="paciente(id)" nullable="false"/>
+            </column>
+        </addColumn>
+
+        <createTable tableName="roles">
+            <column name="usuario_id" type="int"/>
+            <column name="perfis" type="int"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>  -->
